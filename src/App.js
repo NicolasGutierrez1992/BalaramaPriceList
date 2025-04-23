@@ -34,7 +34,7 @@ function App() {
           unidadMedida: row[4], //  columna UnidadMedida
           precioReal: row[5], //  columna PrecioReal
           precio: row[6],//  columna Precio ConDecuento
-          precpreciounitarioio: row[7] //  columna PrecioUnitario
+          preciounitario: row[7] //  columna PrecioUnitario
         }));
         setArticulos(json); // Aquí tienes tu lista de precios en JSON
       })
