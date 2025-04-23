@@ -27,12 +27,14 @@ function App() {
       .then((data) => {
         const rows = data.values; // Los datos se entregan en formato de filas
         const json = rows.slice(1).map((row, index) => ({
-          id: row[0],
-          titulo: row[1], // Primera columna
-          presentacion: row[2], // Segunda columna
-          cantidad: row[3], // Primera columna
-          precio: row[5], // Segunda columna
-          preciounitario: row[6], // Segunda columna
+          id: row[0],//  columna ID
+          titulo: row[1], //  columna Nombre
+          presentacion: row[2], //  columna Presentacion
+          cantidad: row[3], //  columna Cantidad
+          unidadMedida: row[4], //  columna UnidadMedida
+          precioReal: row[5], //  columna PrecioReal
+          precio: row[6],//  columna Precio ConDecuento
+          precpreciounitarioio: row[7] //  columna PrecioUnitario
         }));
         setArticulos(json); // Aquí tienes tu lista de precios en JSON
       })
@@ -53,6 +55,7 @@ function App() {
             key={articulo.id}
             titulo={articulo.titulo}
             presentacion={articulo.presentacion}
+            unidadMedida={articulo.unidadMedida}
             cantidad={articulo.cantidad}
             precio={articulo.precio}
             preciounitario={articulo.preciounitario}
