@@ -57,8 +57,8 @@ function App() {
             presentacion={articulo.presentacion}
             unidadMedida={articulo.unidadMedida}
             cantidad={articulo.cantidad}
-            precio={(articulo.precio.toString() === "0.00") ? "CONSULTAR" : articulo.precio}
-            preciounitario={(articulo.preciounitario.toString() === "0.00") ? "CONSULTAR" : articulo.preciounitario}
+            precio={(articulo.precio.toString() === "$0.00") ? "CONSULTAR" : articulo.precio}
+            preciounitario={(articulo.preciounitario.toString() === "$0.00") ? "CONSULTAR" : articulo.preciounitario}
             onClick={() => handleClick(articulo.titulo)}
           />
         ))}
