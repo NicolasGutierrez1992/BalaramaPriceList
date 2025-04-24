@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const SHEET_ID = "1CPz6JYxp-5kBJlfLZtgudQ_Jndi23U8cT5S0bkjEnj8"; // Sustituye con el ID de tu hoja
     const API_KEY = "AIzaSyBCTT-GTrp6ONC5vgOQOcVJwXvOcj4dRq8"; // Sustituye con tu clave API
-    const SHEET_NAME = "DBLIST"; // El nombre de la pestaña en Google Sheets
+    const SHEET_NAME = "LISTA"; // El nombre de la pestaña en Google Sheets
 
     //`https://docs.google.com/spreadsheets/d/1CPz6JYxp-5kBJlfLZtgudQ_Jndi23U8cT5S0bkjEnj8/edit?usp=sharing
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
