@@ -1,8 +1,8 @@
 
 
-const HOST = process.env.HOST || "localhost";
+const HOST_API = process.env.HOST_API || "localhost";
 export async function sendOrder(cart, token) {
-  const res = await fetch(`${HOST}/api/order`, {
+  const res = await fetch(`${HOST_API}/api/order`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
