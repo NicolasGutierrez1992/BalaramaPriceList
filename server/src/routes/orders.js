@@ -21,7 +21,7 @@ console.log("Datos del pedido:", { usuario, cart });
     return res.status(400).json({ error: "Carrito vacío o no enviado" });
   }
 
-  if (!usuario || !usuario.nombre || !usuario.email) {
+  if (!usuario.email) {
     return res.status(400).json({ error: "Usuario no válido" });
   }
 
