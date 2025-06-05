@@ -2,7 +2,7 @@
 
 const HOST_API = process.env.HOST_API || "localhost";
 export async function sendOrder(cart, token) {
-  const res = await fetch(`${HOST_API}/api/order`, {
+  const res = await fetch(`https://balaramapricelist-devserver.onrender.com/api/order`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
