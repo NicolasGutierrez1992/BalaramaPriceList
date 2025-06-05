@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 router.post("/order", verifyToken, async (req, res) => {
   const usuario = req.user; // Viene del token validado
   const { cart } = req.body;
-
+console.log("Datos del pedido:", { usuario, cart });
   if (!cart || cart.length === 0) {
     return res.status(400).json({ error: "Carrito vacío o no enviado" });
   }
