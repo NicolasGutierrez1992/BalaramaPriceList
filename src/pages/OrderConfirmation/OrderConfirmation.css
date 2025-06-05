@@ -1,0 +1,43 @@
+.order-confirmation {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  text-align: center;
+}
+
+.order-confirmation .content {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  width: 100%;
+}
+
+.order-confirmation h1 {
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.order-confirmation p {
+  margin-bottom: 24px;
+  color: #555;
+}
+
+.order-confirmation .btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.order-confirmation .btn:hover {
+  background-color: #43a047;
+}
