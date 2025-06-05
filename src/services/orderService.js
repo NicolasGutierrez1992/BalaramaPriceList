@@ -1,10 +1,8 @@
-require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
-const HOST = process.env.HOST || "localhost";
 
 export async function sendOrder(cart, token) {
-  const res = await fetch("http://${HOST}:${PORT}`/api/order", {
+  const res = await fetch(`${HOST}/api/order`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
