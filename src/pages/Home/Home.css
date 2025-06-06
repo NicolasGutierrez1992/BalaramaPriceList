@@ -14,6 +14,7 @@ body {
 
 /* GRILLA DE TARJETAS */
 .lista-articulos {
+  margin-top: 80px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
