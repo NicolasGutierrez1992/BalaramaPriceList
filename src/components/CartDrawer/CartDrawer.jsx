@@ -47,6 +47,7 @@ function CartDrawer({ cart, onClose, onRemove, onSendOrder, comentario, setComen
               </div>
             ))
           )}
+        </div>
          <div className="cart-comentario">
           <label htmlFor="comentario" className="cart-comentario-label">
             Comentario para el pedido:
