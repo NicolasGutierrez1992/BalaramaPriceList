@@ -38,7 +38,7 @@ console.log("Datos del pedido:", { usuario, cart });
     from: `"Balarama" <${process.env.MAIL_USER}>`,
     to: process.env.DESTINO_PEDIDOS,
     subject: `Nuevo pedido de ${usuario.nombre}`,
-    text: `Se recibió un nuevo pedido:\n\nNombre: ${usuario.nombre}\nEmail: ${usuario.email}\nFecha: ${fecha}\n\nProductos:\n${plainList}`,
+    text: `Se recibió un nuevo pedido:\n\nNombre: ${usuario.razonsocial}\nEmail: ${usuario.email}\nFecha: ${fecha}\n\nProductos:\n${plainList}`,
   };
 
   const mailToCustomer = {
@@ -48,7 +48,7 @@ console.log("Datos del pedido:", { usuario, cart });
     html: `
     <div style="font-family: Arial; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
       <h2 style="text-align: center; color: #2c3e50;">¡Gracias por tu pedido!</h2>
-      <p>Hola <strong>${usuario.nombre}</strong>,</p>
+      <p>Hola <strong>${usuario.razonsocial}</strong>,</p>
       <p>Recibimos tu pedido y nos pondremos en contacto con vos a la brevedad.</p>
       <h3>Resumen del pedido:</h3>
       <ul>${htmlList}</ul>
