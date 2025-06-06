@@ -48,7 +48,12 @@ function CartDrawer({ cart, onClose, onRemove, onSendOrder }) {
             ))
           )}
         </div>
-
+        <input
+          type="text"
+          placeholder="Agrega un comentario..."
+          value={comentario}
+          onChange={(e) => setComentario(e.target.value)}
+        />
         <div className="cart-footer">
           <p>
             <strong>Total:</strong> ${total.toFixed(2)}

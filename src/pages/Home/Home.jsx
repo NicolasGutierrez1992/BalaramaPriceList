@@ -9,6 +9,7 @@ import { sendOrder } from "../../services/orderService";
 
 function App() {
   const [articulos, setArticulos] = useState([]);
+  const [comentario, setComentario] = useState("");
   const [cart, setCart] = useState(() => {
     const saved = localStorage.getItem("cart");
     return saved ? JSON.parse(saved) : [];
@@ -72,11 +73,12 @@ function App() {
     }
 
     try {
-      await sendOrder(cart, token);
+      await sendOrder(cart, token,comentario);
       alert("Pedido enviado con éxito 🎉");
       setCart([]);
       localStorage.removeItem("cart");
       setShowCart(false);
+      setComentario("");
     } catch (error) {
       alert("Error enviando pedido: " + error.message);
     }
@@ -127,8 +129,13 @@ function App() {
             })
           }
           onSendOrder={handleSendOrder}
+          comentario={comentario}
+          setComentario={setComentario} 
         />
-      )}
+        
+        
+      )}    
+
     </div>
   );
 }

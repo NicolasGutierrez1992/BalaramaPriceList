@@ -25,7 +25,7 @@ console.log("Datos del pedido:", { usuario, cart });
     return res.status(400).json({ error: "Usuario no válido" });
   }
 
-  const fecha = new Date().toLocaleString();
+  const fecha = new Date().toLocaleString("es-AR", { timeZone: "America/Argentina/Buenos_Aires" });
 
   const plainList = cart
     .map((item) => `${item.quantity} x ${item.titulo} (${item.tipo})`)
