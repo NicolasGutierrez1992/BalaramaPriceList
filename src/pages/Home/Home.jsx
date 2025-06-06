@@ -26,7 +26,7 @@ function App() {
     fetchArticulos().then(setArticulos);
   }, []);
 
-  const handleClick = (articulo) => {
+  const handleClick = (articulo, cantidad) => {
     setCart((prevCart) => {
       const existing = prevCart.find((item) => item.id === articulo.id);
       let updatedCart;
@@ -34,11 +34,11 @@ function App() {
       if (existing) {
         updatedCart = prevCart.map((item) =>
           item.id === articulo.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + cantidad }
             : item
         );
       } else {
-        updatedCart = [...prevCart, { ...articulo, quantity: 1 }];
+        updatedCart = [...prevCart, { ...articulo, quantity: cantidad }];
       }
 
       localStorage.setItem("cart", JSON.stringify(updatedCart));
@@ -102,7 +102,7 @@ function App() {
                 ? "CONSULTAR"
                 : articulo.preciounitario
             }
-            onClick={() => handleClick(articulo)}
+            onClick={() => handleClick(articulo, cantidad)}
           />
         ))}
       </div>
