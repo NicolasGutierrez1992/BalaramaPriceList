@@ -47,13 +47,19 @@ function CartDrawer({ cart, onClose, onRemove, onSendOrder, comentario, setComen
               </div>
             ))
           )}
+         <div className="cart-comentario">
+          <label htmlFor="comentario" className="cart-comentario-label">
+            Comentario para el pedido:
+          </label>
+          <textarea
+            id="comentario"
+            className="cart-comentario-textarea"
+            placeholder="Agrega un comentario para tu pedido..."
+            value={comentario}
+            onChange={(e) => setComentario(e.target.value)}
+            rows={3}
+          />
         </div>
-        <input
-          type="text"
-          placeholder="Agrega un comentario..."
-          value={comentario}
-          onChange={(e) => setComentario(e.target.value)}
-        />
         <div className="cart-footer">
           <p>
             <strong>Total:</strong> ${total.toFixed(2)}
