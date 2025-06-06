@@ -26,7 +26,7 @@ function App() {
     fetchArticulos().then(setArticulos);
   }, []);
 
-  const handleClick = (articulo}) => {
+  const handleClick = (articulo) => {
     setCart((prevCart) => {
       const existing = prevCart.find((item) => item.id === articulo.id);
       let updatedCart;
@@ -38,7 +38,7 @@ function App() {
             : item
         );
       } else {
-        updatedCart = [...prevCart, { ...articulo, quantity: articulo.cantidad }];
+        updatedCart = [...prevCart, { ...articulo, quantity:articulo.cantidad }];
       }
 
       localStorage.setItem("cart", JSON.stringify(updatedCart));
