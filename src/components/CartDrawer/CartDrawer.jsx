@@ -2,7 +2,7 @@ import "./CartDrawer.css";
 import { ShoppingCart } from "lucide-react";
 import { useEffect } from "react";
 
-function CartDrawer({ cart, onClose, onRemove, onSendOrder }) {
+function CartDrawer({ cart, onClose, onRemove, onSendOrder, comentario, setComentario }) {
   const total = cart.reduce((acc, item) => {
     const precio = parseFloat(item.precio.replace("$", "")) || 0;
     return acc + precio * item.quantity;
