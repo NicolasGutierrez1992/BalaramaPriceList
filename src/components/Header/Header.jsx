@@ -18,7 +18,9 @@ const Header = ({ cartCount, onCartClick, onSearchChange }) => {
     <header className="header">
       <div className="header-left">
         <img src="/Logo.png" alt="Logo Verdulería" className="logo" />
-        <div className="buscador-container">
+        
+      </div>
+      <div className="buscador-container">
           <input
             className="filtro-input"
             type="text"
@@ -26,8 +28,7 @@ const Header = ({ cartCount, onCartClick, onSearchChange }) => {
             onChange={(e) => onSearchChange(e.target.value)}
           />
         </div>
-      </div>
-      <div className="header-right">
+        <div className="header-right">
         <button className="icon-btn" onClick={onCartClick}>
           <ShoppingCart size={24} />
           {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
