@@ -27,18 +27,24 @@ function App() {
   }, []);
 
   const handleClick = (articulo) => {
+    const cantidad = Number(articulo.cantidad);
+    if (!cantidad || cantidad <= 0) return;
+
     setCart((prevCart) => {
-      const existing = prevCart.find((item) => item.id === articulo.id);
+      const existing = prevCart.find(
+        (item) => item.id === articulo.id && item.tipo === articulo.tipo
+      );
+
       let updatedCart;
 
       if (existing) {
         updatedCart = prevCart.map((item) =>
-          item.id === articulo.id
-            ? { ...articulo, quantity: +item.quantity + +articulo.cantidad }
-            : item          
+          item.id === articulo.id && item.tipo === articulo.tipo
+            ? { ...item, quantity: item.quantity + cantidad }
+            : item
         );
       } else {
-        updatedCart = [...prevCart, { ...articulo, quantity:articulo.cantidad }];
+        updatedCart = [...prevCart, { ...articulo, quantity: cantidad }];
       }
 
       localStorage.setItem("cart", JSON.stringify(updatedCart));
@@ -102,7 +108,9 @@ function App() {
                 ? "CONSULTAR"
                 : articulo.preciounitario
             }
-            onClick={() => handleClick(articulo)}
+            onClick={({ cantidad, tipo }) =>
+              handleClick({ ...articulo, cantidad, tipo })
+            }
           />
         ))}
       </div>
