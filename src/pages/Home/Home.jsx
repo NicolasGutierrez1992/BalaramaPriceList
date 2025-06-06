@@ -34,8 +34,8 @@ function App() {
       if (existing) {
         updatedCart = prevCart.map((item) =>
           item.id === articulo.id
-            ? { ...item, quantity: +item.quantity + +articulo.cantidad }
-            : item
+            ? { ...articulo, quantity: +item.quantity + +articulo.cantidad }
+            : item          
         );
       } else {
         updatedCart = [...prevCart, { ...articulo, quantity:articulo.cantidad }];
