@@ -1,4 +1,7 @@
 body {
+  /* Fondo blanco para toda la página */
+  background: #fff;
+  color: #222;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +13,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root {
+  --verde-suave: #7ec384;
+  --verde-oscuro: #388e3c;
+  --verde-fondo: #e0f2e9;
 }
