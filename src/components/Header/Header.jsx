@@ -17,7 +17,7 @@ const Header = ({ cartCount, onCartClick, onSearchChange }) => {
   return (
     <header className="header">
       <div className="header-left">
-        <img src="/logo.png" alt="Logo Verdulería" className="logo" />
+        <img src="/Logo.png" alt="Logo Verdulería" className="logo" />
         <div className="container">
           <input
             className="filtro-input"
