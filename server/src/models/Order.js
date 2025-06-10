@@ -16,16 +16,16 @@ const createOrder = async (orderData) => {
     const lastOrderId = lastOrderResult.rows[0] ? lastOrderResult.rows[0].id_pedido : 0;
     const newOrderId = lastOrderId + 1; // Incrementamos el último ID para el nuevo pedido
     
-    const { id_Client, cantidaditems, fecharecepcion, estado } = orderData;
+    const { id_Client, cantidaditems, fecharecepcion, estado, comentario } = orderData;
 
 
   const query = `
-    INSERT INTO pedido (id_pedido, id_Cliente, cantidaditems, fecharecepcion, estado)
-    VALUES ($1, $2, $3, $4 , $5)
+    INSERT INTO pedido (id_pedido, id_Cliente, cantidaditems, fecharecepcion, estado, comentario)
+    VALUES ($1, $2, $3, $4 , $5, %6)
     RETURNING *
   `;
 
-  const values = [newOrderId, id_Client, cantidaditems, fecharecepcion, estado];
+  const values = [newOrderId, id_Client, cantidaditems, fecharecepcion, estado , comentario];
   const result = await pool.query(query, values);
   // Devolvemos el nuevo pedido creado
   console.log("Nuevo pedido creado:", result.rows[0]);  
