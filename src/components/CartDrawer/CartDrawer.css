@@ -44,6 +44,7 @@
 }
 
 .cart-items {
+  padding-top: 120px; /* Ajusta este valor según la altura de tu header */
   flex: 1;
   overflow-y: auto;
   margin: 1rem 0;

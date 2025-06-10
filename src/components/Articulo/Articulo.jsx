@@ -30,7 +30,7 @@ function Articulo({
 
       <div className="info-linea centrado">
         <p className="cantidad">
-          Disponible: {cantidad} {unidadMedida}
+          {presentacion}: {cantidad} {unidadMedida}
         </p>
       </div>
 
@@ -58,8 +58,8 @@ function Articulo({
           <option value="" disabled>
             -
           </option>
-          <option value="unidad">Unidad</option>
           <option value="bulto">Bulto</option>
+          <option value="unidad">Unidad</option>
           <option value="kilo">Kilo</option>
         </select>
       </div>

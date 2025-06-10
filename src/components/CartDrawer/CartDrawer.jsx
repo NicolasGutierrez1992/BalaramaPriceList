@@ -2,7 +2,7 @@ import "./CartDrawer.css";
 import { ShoppingCart } from "lucide-react";
 import { useEffect } from "react";
 
-function CartDrawer({ cart, onClose, onRemove, onSendOrder, comentario, setComentario }) {
+function CartDrawer({ cart, onClose, onRemove, onSendOrder, comentario, setComentario, isLoading }) {
   const total = cart.reduce((acc, item) => {
     const precio = parseFloat(item.precio.replace("$", "")) || 0;
     return acc + precio * item.quantity;
@@ -65,8 +65,8 @@ function CartDrawer({ cart, onClose, onRemove, onSendOrder, comentario, setComen
           <p>
             <strong>Total:</strong> ${total.toFixed(2)}<strong> *Sujeto a stock</strong>
           </p>
-          <button onClick={onSendOrder} className="send-btn">
-            Enviar pedido
+          <button onClick={onSendOrder}  disabled={isLoading} className="send-btn">
+             {isLoading ? "Enviando..." : "Enviar pedido"}
           </button>
         </div>
       </div>

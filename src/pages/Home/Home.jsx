@@ -10,6 +10,8 @@ import { sendOrder } from "../../services/orderService";
 function App() {
   const [articulos, setArticulos] = useState([]);
   const [comentario, setComentario] = useState("");
+   const [isLoading, setIsLoading] = useState(false);
+
   const [cart, setCart] = useState(() => {
     const saved = localStorage.getItem("cart");
     return saved ? JSON.parse(saved) : [];
@@ -71,7 +73,7 @@ function App() {
       alert("El carrito está vacío.");
       return;
     }
-
+    setIsLoading(true);
     try {
       await sendOrder(cart, token,comentario);
       alert("Pedido enviado con éxito 🎉");
@@ -81,6 +83,8 @@ function App() {
       setComentario("");
     } catch (error) {
       alert("Error enviando pedido: " + error.message);
+    }finally {
+      setIsLoading(false);
     }
   };
 
@@ -131,6 +135,7 @@ function App() {
           onSendOrder={handleSendOrder}
           comentario={comentario}
           setComentario={setComentario} 
+          isLoading={isLoading} // <-- pasa el estado aquí
         />
         
         
