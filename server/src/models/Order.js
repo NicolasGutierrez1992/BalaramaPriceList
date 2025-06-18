@@ -21,7 +21,7 @@ const createOrder = async (orderData) => {
 
   const query = `
     INSERT INTO pedido (id_pedido, id_Cliente, cantidaditems, fecharecepcion, estado, comentario)
-    VALUES ($1, $2, $3, $4 , $5, %6)
+    VALUES ($1, $2, $3, $4 , $5, $6)
     RETURNING *
   `;
   console.log(query);
