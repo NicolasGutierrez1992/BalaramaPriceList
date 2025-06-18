@@ -24,9 +24,11 @@ const createOrder = async (orderData) => {
     VALUES ($1, $2, $3, $4 , $5, $6)
     RETURNING *
   `;
-  console.log(query);
+ 
 
   const values = [newOrderId, id_Client, cantidaditems, fecharecepcion, estado , comentario];
+   console.log(query);
+    console.log(values);
   const result = await pool.query(query, values);
   // Devolvemos el nuevo pedido creado
   console.log("Nuevo pedido creado:", result.rows[0]);  
