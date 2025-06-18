@@ -1,5 +1,6 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
+const moment = require('moment-timezone');
 const verifyToken = require("../middleware/verifyToken");
 const {createOrder,createOrderDetail} = require("../models/Order");
 
@@ -30,7 +31,7 @@ router.post("/order", verifyToken, async (req, res) => {
   const { cart , comentario} = req.body;
   const id_Client = usuario.id; // ID del usuario autenticado
   const cantidaditems = cart.reduce((total, item) => total + item.quantity, 0);
-  const fecharecepcion = new Date().toLocaleString("es-AR", { timeZone: "America/Argentina/Buenos_Aires" });
+  const fecharecepcion =  moment().tz("America/Argentina/Buenos_Aires").format("YYYY-MM-DD HH:mm:ss"); // Fecha de recepción en formato adecuado
   const estado = "Pendiente"; // Estado inicial del pedido
   
   // Validación de datos
