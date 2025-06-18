@@ -62,9 +62,6 @@ function CartDrawer({ cart, onClose, onRemove, onSendOrder, comentario, setComen
           />
         </div>
         <div className="cart-footer">
-          <p>
-            <strong>Total:</strong> ${total.toFixed(2)}<strong> *Sujeto a stock</strong>
-          </p>
           <button onClick={onSendOrder}  disabled={isLoading} className="send-btn">
              {isLoading ? "Enviando..." : "Enviar pedido"}
           </button>
