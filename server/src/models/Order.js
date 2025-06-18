@@ -24,6 +24,7 @@ const createOrder = async (orderData) => {
     VALUES ($1, $2, $3, $4 , $5, %6)
     RETURNING *
   `;
+  console.log(query);
 
   const values = [newOrderId, id_Client, cantidaditems, fecharecepcion, estado , comentario];
   const result = await pool.query(query, values);
