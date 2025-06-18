@@ -1,69 +1,63 @@
-//import logo from './logo.svg';
-import './App.css';
-import React, { useState, useEffect } from "react";
-import Articulo from "./Articulo";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import OrderConfirmation from "./pages/OrderConfirmation/OrderConfirmation";
 
+// Si no hay usuario, lo redirige al login
+function ProtectedRoute({ children }) {
+  const docnum = localStorage.getItem("docnum");
+  return docnum ? children : <Navigate to="/login" />;
+}
 
-
-
+function PublicRoute({ children }) {
+  const docnum = localStorage.getItem("docnum");
+  return docnum ? <Navigate to="/home" /> : children;
+}
 
 function App() {
-  const [articulos, setArticulos] = useState([]);
-  const handleClick = (titulo) => {
-    // alert(`Has hecho clic en el artículo: ${titulo}`);
-  };
+  const docnum = localStorage.getItem("docnum");
 
-  useEffect(() => {
-    const SHEET_ID = "1CPz6JYxp-5kBJlfLZtgudQ_Jndi23U8cT5S0bkjEnj8"; // Sustituye con el ID de tu hoja
-    const API_KEY = "AIzaSyBCTT-GTrp6ONC5vgOQOcVJwXvOcj4dRq8"; // Sustituye con tu clave API
-    const SHEET_NAME = "LISTA"; // El nombre de la pestaña en Google Sheets
-
-    //`https://docs.google.com/spreadsheets/d/1CPz6JYxp-5kBJlfLZtgudQ_Jndi23U8cT5S0bkjEnj8/edit?usp=sharing
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
-
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        const rows = data.values; // Los datos se entregan en formato de filas
-        const json = rows.slice(1).map((row, index) => ({
-          id: row[0],//  columna ID
-          titulo: row[1], //  columna Nombre
-          presentacion: row[2], //  columna Presentacion
-          cantidad: row[3], //  columna Cantidad
-          unidadMedida: row[4], //  columna UnidadMedida
-          precioReal: row[5], //  columna PrecioReal
-          precio: row[6],//  columna Precio ConDecuento
-          preciounitario: row[7] //  columna PrecioUnitario
-        }));
-        setArticulos(json); // Aquí tienes tu lista de precios en JSON
-      })
-      .catch((error) => console.error("Error al obtener datos:", error));
-  }, []);
   return (
+    <Router>
+      <Routes>
+        {/* Redirección base según sesión */}
+        <Route
+          path="/"
+          element={
+            docnum ? (
+              <Navigate to="/home" replace />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
 
-    <div className="App">
-      {/* Encabezado con logo */}
-      <header className="header">
-        <img src="/logo.png" alt="Logo Verdulería" className="logo" />
-        <h1>Lista de Precios - Verdulería</h1>
-      </header>
-      <div className="container">
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
 
-        {articulos.map((articulo) => (
-          <Articulo
-            key={articulo.id}
-            titulo={articulo.titulo}
-            presentacion={articulo.presentacion}
-            unidadMedida={articulo.unidadMedida}
-            cantidad={articulo.cantidad}
-            precio={(articulo.precio.toString() === "$0.00") ? "CONSULTAR" : articulo.precio}
-            preciounitario={(articulo.preciounitario.toString() === "$0.00") ? "CONSULTAR" : articulo.preciounitario}
-            onClick={() => handleClick(articulo.titulo)}
-          />
-        ))}
-      </div>
-    </div>
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
+      </Routes>
+    </Router>
   );
 }
 
