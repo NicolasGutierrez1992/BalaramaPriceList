@@ -4,7 +4,7 @@ import "./Articulo.css"; // Importa los estilos desde un archivo CSS
 function Articulo({ titulo, presentacion, unidadMedida, cantidad, precio, preciounitario, onClick }) {
     return (
         <div
-            className="articulo"
+            className="articulo-card"
             onClick={onClick}
         >
             <h2 className="titulo">{titulo.toUpperCase()}</h2>
