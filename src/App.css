@@ -2,7 +2,6 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #a8e063, #56ab2f);
   color: #333;
 }
 
@@ -121,7 +120,7 @@ body {
 }
 
 .logo {
-  width: 300px;
+  width: 150px;
   height: auto;
   margin-left: 1rem;
 }
