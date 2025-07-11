@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const SHEET_ID = "1CPz6JYxp-5kBJlfLZtgudQ_Jndi23U8cT5S0bkjEnj8"; // Sustituye con el ID de tu hoja
     const API_KEY = "AIzaSyBCTT-GTrp6ONC5vgOQOcVJwXvOcj4dRq8"; // Sustituye con tu clave API
-    const SHEET_NAME = "PROMO!A4:L138"; // El nombre de la pestaña en Google Sheets
+    const SHEET_NAME = "LISTA"; // El nombre de la pestaña en Google Sheets
 
     //`https://docs.google.com/spreadsheets/d/1CPz6JYxp-5kBJlfLZtgudQ_Jndi23U8cT5S0bkjEnj8/edit?usp=sharing
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
@@ -57,7 +57,7 @@ function App() {
           </div>
           <div className="header-center">
             <h1 className="titulo-header">
-              BALARAMA PROMOCIONES!!<br />Lista de Precios Especiales
+              DISTRIBUIDORA BALARAMA<br />Lista de Precios 
             </h1>
             <input
               type="text"
@@ -85,19 +85,19 @@ function App() {
           />
         ))}
       </div>
-      <a
-    href="https://wa.me/5491150172848" // Reemplaza por tu número, por ejemplo: 5491122334455
-    className="whatsapp-float"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Enviar WhatsApp"
-  >
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-      alt="WhatsApp"
-      className="whatsapp-icon"
-    />
-  </a>
+         <a
+          href="https://wa.me/5491150172848" // Reemplaza por tu número, por ejemplo: 5491122334455
+          className="whatsapp-float"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Enviar WhatsApp"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp"
+            className="whatsapp-icon"
+          />
+        </a>
     </div>
   );
 }
