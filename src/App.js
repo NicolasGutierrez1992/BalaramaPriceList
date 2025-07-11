@@ -9,6 +9,7 @@ import Articulo from "./Articulo";
 
 function App() {
   const [articulos, setArticulos] = useState([]);
+  const [busqueda, setBusqueda] = useState('');
   const handleClick = (titulo) => {
     // alert(`Has hecho clic en el artículo: ${titulo}`);
   };
@@ -25,6 +26,7 @@ function App() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         const rows = data.values; // Los datos se entregan en formato de filas
         const json = rows.slice(1).map((row, index) => ({
           id: row[0],//  columna ID
@@ -40,17 +42,37 @@ function App() {
       })
       .catch((error) => console.error("Error al obtener datos:", error));
   }, []);
+  const articulosFiltrados = articulos.filter(articulo =>
+    articulo.titulo &&  articulo.titulo.toLowerCase().startsWith(busqueda.trim().toLowerCase())
+
+  );
   return (
 
     <div className="App">
       {/* Encabezado con logo */}
-      <header className="header">
-        <img src="/logo.png" alt="Logo Verdulería" className="logo" />
-        <h1>Lista de Precios - Verdulería</h1>
+       <header className="header">
+        <div className="header-flex">
+          <div className="header-logo">
+            <img src="/logo.png" alt="Logo Verdulería" className="logo" />
+          </div>
+          <div className="header-center">
+            <h1 className="titulo-header">
+              DISTRIBUIDORA BALARAMA<br />Lista de Precios 
+            </h1>
+            <input
+              type="text"
+              placeholder="Buscar por título..."
+              value={busqueda}
+              onChange={e => setBusqueda(e.target.value)}
+              className="buscador"
+            />
+          </div>
+          <div className="header-empty"></div>
+        </div>
       </header>
       <div className="container">
 
-        {articulos.map((articulo) => (
+        {articulosFiltrados.map((articulo) => (
           <Articulo
             key={articulo.id}
             titulo={articulo.titulo}
